@@ -1,6 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import { env } from '@/config/env';
+import { errorHandler, notFoundHandler } from '@/middlewares/error.middleware';
+import authRoutes from '@/modules/auth/auth.routes';
+import swaggerUi from 'swagger-ui-express';
+import '@/modules/auth/auth.docs'; 
+import { generateOpenApiDocument } from '@/docs/openapi';
 
 const app = express();
 
@@ -12,8 +17,13 @@ app.get('/api/health', (_req, res) => {
   res.json({ success: true, message: 'Server is healthy 🚀' });
 });
 
-app.use((req, res) => {
-  res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found` });
-});
+// Swagger docs — served at /api/docs
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(generateOpenApiDocument()));
+
+
+app.use('/api/auth', authRoutes);
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 export default app;
