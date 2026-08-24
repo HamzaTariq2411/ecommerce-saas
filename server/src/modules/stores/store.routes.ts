@@ -3,6 +3,7 @@ import { create, getBySlug, getById, update, listAll } from './store.controller'
 import { protect, requireRole, requireOwnStore } from '@/middlewares/auth.middleware';
 import { validate } from '@/middlewares/validate.middleware';
 import { createStoreSchema, updateStoreSchema } from './store.validator';
+import productRoutes from '@/modules/products/product.routes';
 
 const router = Router();
 
@@ -27,5 +28,7 @@ router.patch(
   validate(updateStoreSchema),
   update
 );
+
+router.use('/:storeId/products', productRoutes);
 
 export default router;

@@ -8,6 +8,7 @@ import '@/modules/auth/auth.docs';
 import { generateOpenApiDocument } from '@/docs/openapi';
 import storeRoutes from '@/modules/stores/store.routes';
 import '@/modules/stores/store.docs';
+import '@/modules/products/product.docs';
 
 const app = express();
 
