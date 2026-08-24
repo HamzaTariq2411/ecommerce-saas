@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import '@/docs/registry'; // ensures extendZodWithOpenApi has run before .openapi() is used
+import '@/docs/registry'; 
 
 export const registerSchema = z
   .object({

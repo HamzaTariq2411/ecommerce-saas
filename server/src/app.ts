@@ -6,6 +6,8 @@ import authRoutes from '@/modules/auth/auth.routes';
 import swaggerUi from 'swagger-ui-express';
 import '@/modules/auth/auth.docs'; 
 import { generateOpenApiDocument } from '@/docs/openapi';
+import storeRoutes from '@/modules/stores/store.routes';
+import '@/modules/stores/store.docs';
 
 const app = express();
 
@@ -22,6 +24,7 @@ app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(generateOpenApiDocument())
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/stores', storeRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
