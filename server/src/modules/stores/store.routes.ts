@@ -4,6 +4,7 @@ import { protect, requireRole, requireOwnStore } from '@/middlewares/auth.middle
 import { validate } from '@/middlewares/validate.middleware';
 import { createStoreSchema, updateStoreSchema } from './store.validator';
 import productRoutes from '@/modules/products/product.routes';
+import billingRoutes from '@/modules/billing/billing.routes';
 
 const router = Router();
 
@@ -30,5 +31,6 @@ router.patch(
 );
 
 router.use('/:storeId/products', productRoutes);
+router.use('/:storeId/billing', billingRoutes);
 
 export default router;

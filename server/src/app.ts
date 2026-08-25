@@ -9,6 +9,7 @@ import { generateOpenApiDocument } from '@/docs/openapi';
 import storeRoutes from '@/modules/stores/store.routes';
 import '@/modules/stores/store.docs';
 import '@/modules/products/product.docs';
+import '@/modules/billing/billing.docs';
 
 const app = express();
 
